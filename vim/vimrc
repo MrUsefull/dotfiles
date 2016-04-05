@@ -62,10 +62,10 @@ syntax sync fromstart "increases syntax accuracy, pay with performance
 set noerrorbells
 set vb t_vb=""
 
-" use mouse everywhere
+"use mouse everywhere
 set mouse=a
 
-" turn on command line completion wild style
+"turn on command line completion wild style
 set wildmenu
 
 "ignore these list file extensions
@@ -76,10 +76,10 @@ set wildmode=list:longest " turn on wild mode huge list
 set scrolloff=4
 set sidescrolloff=4 " Keep n lines at the side
 
-" always show the status line
+"always show the status line
 set laststatus=2
 
-" we do what to show tabs, to ensure we get them  out of my files
+"Show me the tabs
 set list
 " show tabs and trailing
 set listchars=tab:>-,trail:-
@@ -87,13 +87,13 @@ set listchars=tab:>-,trail:-
 "show line numbers
 set number
 
-" Show number of lines changed by : commands
+"Show number of lines changed by : commands
 set report=0
 
-" show the command being typed
+"show the command being typed
 set showcmd
 
-" do not wrap line
+"do not wrap line
 set nowrap
 "if we do ever decide to wrap display a nice wrap image
 set showbreak=↪
@@ -105,13 +105,13 @@ set showbreak=↪
 "Highlight current line
 set cursorline
 
-" make backspace always work
+"make backspace always work
 set backspace=indent,eol,start
 
-" toggle paste mode
+"toggle paste mode
 set pastetoggle=<F2>
 
-" toggle spellcheck
+"toggle spellcheck
 map <F7> :setlocal spell! spelllang=en_us<CR>
 
 " ##########################################
@@ -136,6 +136,8 @@ let NERDTreeChDirMode=2
 " Change nerdtree's root directory to cwd. Press \n when in nerdtree's window
 nnoremap <leader>n :NERDTree .<CR>
 " End nerdtree's root problem
+" enable line numbers
+let NERDTreeShowLineNumbers=1
 
 "color scheme
 set t_Co=256 "this forces vim to use 256 colors even if the console says it is not supported
@@ -164,11 +166,6 @@ set ttimeoutlen=100
 filetype plugin on
 filetype indent on
 
-" ###### FOR PIG #####
-augroup filetypedetect
-  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
-augroup END
-
 " ##########################################
 "          syntastic c++11 testing
 " ##########################################
@@ -177,3 +174,13 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_check_header = 1
 let b:syntastic_cpp_cflags = '-include /usr/include/stddef.h'
 let g:syntastic_cpp_remove_include_errors = 1
+
+" #########################################
+"           Filetype specifics
+" #########################################
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+"###### FOR PIG #####
+augroup filetypedetect
+  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+augroup END
