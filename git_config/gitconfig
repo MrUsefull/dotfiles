@@ -1,0 +1,11 @@
+[credential]
+	helper = store
+[user]
+	name = jcolby
+	email = jon@colby.gg
+[core]
+	editor = vim
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false

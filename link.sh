@@ -46,14 +46,14 @@ function conky {
     link $cwd/conky/conkyrc ~/.conkyrc
 }
 
-#can not be called git, conflicts with download submodules
-#function git_config {
-#    echo "Linking git"
-#    for file in $(ls $cwd/git);
-#    do
-#        link $cwd/git/$file ~/.$file
-#    done
-#}
+# cannot be called git, conflicts with download submodules
+function git_config {
+    echo "Linking git"
+    for file in $(ls $cwd/git_config);
+    do
+        link $cwd/git_config/$file ~/.$file
+    done
+}
 
 function shell {
     echo "Linking shell"
@@ -85,13 +85,7 @@ function scripts {
 }
 
 function run {
-    if [ $1 == "git" ];
-    then
-        c="git_config"
-    else
-        c=$1
-    fi
-    eval ${c}
+    eval ${1}
 }
 
 function all {
