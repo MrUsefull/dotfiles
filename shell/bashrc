@@ -23,17 +23,17 @@ if [ -f /etc/bashrc ]; then
 fi
 #End path
 
-mvim () {
-    local f
-    for f; do
-        test -e "$f" || touch "$f"
-    done
-    open -a macvim "$@"
-}
-
 #For mac specifics
 if [ `uname` == 'Darwin' ]
 then
+    mvim () {
+        local f
+        for f; do
+            test -e "$f" || touch "$f"
+        done
+        open -a macvim "$@"
+    }
+
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
     #Mac specific ALIAS'
@@ -66,15 +66,6 @@ WHITE='\033[01;37m'
 MYDIR="\[$GREEN[$LYELLOW\]\w\[$GREEN]\n"
 ATHOST="\[$CYAN\]\u\[$RESTORE\]@\[$LGREEN\]\h\[$GREEN\]"
 PS1="$MYDIR[$ATHOST]\$\[$RESTORE\] "
-
-#MYDIR="[\[\033[33;1m\]\w\[\033[m\]]\n"
-#PS1="$MYDIR[\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h]\$ "
-
-#if you want to use perlbrew:
-#if [ -f  ~/perl5/perlbrew/etc/bashrc ]
-#then
-#    source ~/perl5/perlbrew/etc/bashrc
-#fi
 
 #Functions to make life easier
 
@@ -127,13 +118,3 @@ man()
 
 # User specific aliases and functions
 alias ls="ls -p" #puts a nice / after dirs
-
-#PIG VARIABLES
-#export JAVA_HOME=/home/y/libexec/jre1.7.0
-#export PATH=$PATH:/usr/local/opt/ruby/bin
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-#For arduino makefile
-export ARDUINO_BASE_DIR=/Users/jcolby/Downloads/Arduino.app/
-export ARDUINO_JAVA_VERSION=7
