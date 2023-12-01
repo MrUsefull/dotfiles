@@ -118,3 +118,8 @@ man()
 
 # User specific aliases and functions
 alias ls="ls -p" #puts a nice / after dirs
+
+# Config go settings
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
