@@ -42,8 +42,11 @@ function vim {
 }
 
 function conky {
-    echo "Linking conky"
-    link $cwd/conky/conkyrc ~/.conkyrc
+    echo "enabling lean conky"
+    cd $cwd/conky
+    git clone git@github.com:jxai/lean-conky-config.git
+    cd lean-conky-config
+    bash ./start-lcc.sh
 }
 
 # cannot be called git, conflicts with download submodules
