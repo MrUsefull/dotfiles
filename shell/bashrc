@@ -117,12 +117,19 @@ man()
 }
 
 # User specific aliases and functions
-alias ls="ls -p" #puts a nice / after dirs
+alias ls="ls -p --color=auto" #puts a nice / after dirs
 
 # Config go settings
 export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOPATH=${HOME}/go
+export PATH=${GOPATH}/bin:${GOROOT}/bin:${PATH}
 
 # minikube dev env
 alias kubectl="minikube kubectl --"
+
+# Setup pip packages/ansible path
+export PATH=${PATH}:${HOME}/.local/bin
+
+
+# Set private gitlab
+export GOPRIVATE=gitlab.comphychaircoding.net
