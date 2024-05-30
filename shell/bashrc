@@ -123,6 +123,8 @@ alias ls="ls -p --color=auto" #puts a nice / after dirs
 export GOROOT=/usr/local/go
 export GOPATH=${HOME}/go
 export PATH=${GOPATH}/bin:${GOROOT}/bin:${PATH}
+# Set private gitlab
+export GOPRIVATE=gitlab.colby.gg
 
 # minikube dev env
 alias kubectl="minikube kubectl --"
@@ -131,5 +133,9 @@ alias kubectl="minikube kubectl --"
 export PATH=${PATH}:${HOME}/.local/bin
 
 
-# Set private gitlab
-export GOPRIVATE=gitlab.comphychaircoding.net
+
+# Add ssh keys if they're not already added
+ssh-add -l &> /dev/null
+if [ $? -ne 0 ]; then
+    ssh-add $(ls -d ~/.ssh/* | grep -v -e "\.pub" -e "known_hosts" -e "config")
+fi
