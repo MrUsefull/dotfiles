@@ -43,7 +43,6 @@ function vim {
 
 function conky {
     echo "enabling lean conky"
-    cd $cwd/conky
     git clone git@github.com:jxai/lean-conky-config.git
     cd lean-conky-config
     echo "You will need to add the following command to autostart:"
