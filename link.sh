@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -xeu
+
 # the dir this script is in
 cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -43,8 +45,17 @@ function vim {
 
 function conky {
     echo "enabling lean conky"
-    git clone git@github.com:jxai/lean-conky-config.git
-    cd lean-conky-config
+    CONKY_DIR=lean-conky-config
+    if [ ! -d ${CONKY_DIR}  ]; then
+        git clone git@github.com:jxai/lean-conky-config.git
+    else
+        cd ${CONKY_DIR}
+        git reset --hard HEAD
+        git pull
+        cd ../
+    fi
+    cp conky.conf ${CONKY_DIR}/conky.conf
+    cd ${CONKY_DIR}
     echo "You will need to add the following command to autostart:"
     echo "${cwd}/conky/lean-conky-config/start-lcc.sh}"
     bash ./start-lcc.sh
